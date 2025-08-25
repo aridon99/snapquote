@@ -229,7 +229,7 @@ export class TestValidator {
 
   private async validateQuoteGeneration(): Promise<any> {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/generate`, {
+      const fetchResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -247,10 +247,10 @@ export class TestValidator {
         })
       })
 
-      const result = await response.json()
+      const result = await fetchResponse.json()
       
-      if (!response.ok) {
-        return { error: result.error || 'API call failed', status: response.status }
+      if (!fetchResponse.ok) {
+        return { error: result.error || 'API call failed', status: fetchResponse.status }
       }
 
       return { success: true, quote_id: result.quote?.id, total: result.quote?.total }
@@ -295,7 +295,7 @@ export class TestValidator {
         return { error: 'Could not create test session' }
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/edit`, {
+      const fetchResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/edit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -306,7 +306,7 @@ export class TestValidator {
         })
       })
 
-      const result = await response.json()
+      const result = await fetchResponse.json()
       
       // Clean up test session
       (await this.getSupabaseClient())
@@ -314,8 +314,8 @@ export class TestValidator {
         .delete()
         .eq('id', session.id)
 
-      if (!response.ok) {
-        return { error: result.error || 'Voice edit API failed', status: response.status }
+      if (!fetchResponse.ok) {
+        return { error: result.error || 'Voice edit API failed', status: fetchResponse.status }
       }
 
       return { success: true, changes_detected: result.changes?.length > 0 }
@@ -332,14 +332,14 @@ export class TestValidator {
   private async validateWhatsAppWebhook(): Promise<any> {
     // Check if the webhook endpoint is accessible
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks/whatsapp-quote`, {
+      const fetchResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks/whatsapp-quote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'From=test&Body=test'
       })
 
       // Even if it returns an error, the endpoint should be accessible
-      return { endpoint: 'accessible', status: response.status }
+      return { endpoint: 'accessible', status: fetchResponse.status }
     } catch (error) {
       return { error: 'Webhook endpoint not accessible' }
     }
@@ -378,16 +378,16 @@ export class TestValidator {
   private async validateErrorHandling(): Promise<any> {
     // Check that error handling is working by making an invalid API call
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/generate`, {
+      const fetchResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({}) // Invalid request
       })
 
-      const result = await response.json()
+      const result = await fetchResponse.json()
       
       // We expect this to fail with a proper error message
-      const hasErrorHandling = !response.ok && result.error
+      const hasErrorHandling = !fetchResponse.ok && result.error
       return { error_handling: hasErrorHandling ? 'working' : 'not_working' }
     } catch (error) {
       return { error: 'Could not test error handling' }

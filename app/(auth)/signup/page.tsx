@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -12,7 +12,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { toast } from 'react-hot-toast'
 import { AlertCircle, Phone, Briefcase } from 'lucide-react'
 
-export default function SignupPage() {
+function SignupForm() {
   const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     email: '',
@@ -435,5 +435,13 @@ export default function SignupPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div>Loading...</div></div>}>
+      <SignupForm />
+    </Suspense>
   )
 }

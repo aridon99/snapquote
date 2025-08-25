@@ -166,7 +166,7 @@ export interface ProjectMilestone {
   id: string
   project_id: string
   name: string
-  description?: string | null
+  description: string | null
   target_date?: string | null
   completed_date?: string | null
   progress_percentage: number
@@ -286,7 +286,7 @@ export interface MaterialPurchase {
   created_at: string
 }
 
-export interface ProjectMilestone {
+export interface DetailedProjectMilestone {
   id: string
   project_id: string
   tenant_id: string
@@ -360,7 +360,7 @@ export type PaymentTransactionType = PaymentTransaction['type']
 export type PaymentTransactionStatus = PaymentTransaction['status']
 export type DeliveryStatus = MaterialPurchase['delivery_status']
 export type MilestoneStatus = ProjectMilestone['status']
-export type PaymentStatus = ProjectMilestone['payment_status']
+export type PaymentStatus = DetailedProjectMilestone['payment_status']
 export type CredentialType = TrustCredential['credential_type']
 export type ReminderType = PaymentReminder['reminder_type']
 
