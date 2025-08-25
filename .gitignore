@@ -103,3 +103,4 @@ coverage/
 
 # Local development files that shouldn't be committed
 .env.local
+.vercel

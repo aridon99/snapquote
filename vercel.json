@@ -1,21 +1,5 @@
 {
   "version": 2,
-  "name": "renovation-advisor",
-  "alias": ["renovation-advisor"],
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 30
-    },
-    "app/api/webhooks/**/*.ts": {
-      "maxDuration": 60
-    }
-  },
   "regions": ["sfo1"],
   "env": {
     "NODE_ENV": "production"
