@@ -1,0 +1,23 @@
+# F14A Punch List Magic Environment Variables
+# Add these to your .env.local file
+
+# WhatsApp Business API
+WHATSAPP_ACCESS_TOKEN=your_whatsapp_access_token
+WHATSAPP_VERIFY_TOKEN=your_whatsapp_verify_token_for_webhook
+WHATSAPP_PHONE_NUMBER_ID=your_whatsapp_phone_number_id
+
+# Voice Processing Options
+USE_LOCAL_WHISPER=false  # Set to true to use local Whisper instead of OpenAI API
+
+# Cron Job Security
+CRON_SECRET_KEY=your_secure_random_string_for_cron_endpoints
+
+# Existing required variables (ensure these are set):
+# NEXT_PUBLIC_SUPABASE_URL=
+# SUPABASE_SERVICE_ROLE_KEY=
+# OPENAI_API_KEY=
+# TWILIO_ACCOUNT_SID=
+# TWILIO_AUTH_TOKEN=
+# TWILIO_PHONE_NUMBER=
+# ADMIN_PHONE=
+# NEXT_PUBLIC_APP_URL=

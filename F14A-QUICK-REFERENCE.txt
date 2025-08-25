@@ -1,0 +1,38 @@
+F14A PUNCH LIST MAGIC - QUICK REFERENCE
+======================================
+
+📱 WhatsApp Setup:
+   • Webhook: /api/webhooks/whatsapp
+   • Verify token in env vars
+
+📧 SMS Setup:  
+   • Webhook: /api/webhooks/twilio
+   • Status callbacks enabled
+
+🎛️ Admin Dashboard:
+   • URL: /admin/punch-list
+   • Manual processing controls
+   • Real-time pipeline monitoring
+
+🔄 Cron Processing:
+   • Endpoint: /api/cron/punch-list  
+   • Auth: Bearer CRON_SECRET_KEY
+   • Recommended: every 2-5 minutes
+
+📊 API Endpoints:
+   • Pipeline control: /api/punch-list/process
+   • Health checks: Add ?action=health
+   • Manual triggers via POST
+
+🗄️ Database Tables:
+   • voice_messages - incoming WhatsApp audio
+   • voice_transcriptions - speech-to-text results  
+   • punch_list_items - extracted tasks
+   • punch_list_assignments - contractor assignments
+   • voice_processing_logs - pipeline debugging
+   • whatsapp_webhook_events - webhook audit trail
+   • twilio_webhook_events - SMS delivery tracking
+
+💰 Cost Per Voice Message: ~$0.56
+⏱️ Time Savings: ~$75 of manual work
+📈 ROI: 134x return on processing cost

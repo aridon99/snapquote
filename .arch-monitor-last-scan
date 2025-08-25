@@ -1,0 +1,1561 @@
+{
+  "timestamp": 1755535559533,
+  "files": {
+    "app/api/analytics/conversations/route.ts": {
+      "lastModified": 1755303937452,
+      "size": 2487,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/analytics/leads/route.ts": {
+      "lastModified": 1755303953834,
+      "size": 3506,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/analytics/route.ts": {
+      "lastModified": 1755303674313,
+      "size": 1793,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/services/analytics"
+        ],
+        "dependencies": []
+      }
+    },
+    "app/api/chat/route.ts": {
+      "lastModified": 1755105575320,
+      "size": 5124,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 5,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/openai"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/chatbot/lead/route.ts": {
+      "lastModified": 1755327219176,
+      "size": 1740,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "zod",
+          "@/lib/services/notificationapi"
+        ],
+        "dependencies": [
+          "next",
+          "zod"
+        ]
+      }
+    },
+    "app/api/chatbot/route.ts": {
+      "lastModified": 1755327700065,
+      "size": 13161,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "openai",
+          "fs",
+          "path",
+          "@/lib/services/analytics",
+          "@/lib/services/notificationapi"
+        ],
+        "dependencies": [
+          "next",
+          "openai",
+          "fs",
+          "path"
+        ]
+      }
+    },
+    "app/api/contractors/match/route.ts": {
+      "lastModified": 1755065448209,
+      "size": 3113,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/types/database"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/leads/route.ts": {
+      "lastModified": 1755303865567,
+      "size": 5610,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/services/notifications",
+          "@/lib/services/analytics"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/milestones/[id]/route.ts": {
+      "lastModified": 1755242430480,
+      "size": 5780,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 3,
+        "components": 0,
+        "integrations": 5,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/auth",
+          "@/lib/supabase/server",
+          "@/types/milestones"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/notifications/email/route.ts": {
+      "lastModified": 1755241369890,
+      "size": 6588,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/auth"
+        ],
+        "dependencies": []
+      }
+    },
+    "app/api/notifications/sms/route.ts": {
+      "lastModified": 1755241410477,
+      "size": 2902,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/auth"
+        ],
+        "dependencies": []
+      }
+    },
+    "app/api/payments/escrow/route.ts": {
+      "lastModified": 1755105464053,
+      "size": 4224,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 5,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/stripe"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/payments/release/route.ts": {
+      "lastModified": 1755105467412,
+      "size": 4507,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 4,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/stripe"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/[id]/contractors/route.ts": {
+      "lastModified": 1755240942709,
+      "size": 3465,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 4,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/auth"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/[id]/files/route.ts": {
+      "lastModified": 1755241219529,
+      "size": 8092,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 3,
+        "components": 0,
+        "integrations": 5,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/auth"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/[id]/messages/route.ts": {
+      "lastModified": 1755240971927,
+      "size": 4567,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 4,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/auth",
+          "@/lib/utils/validation"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/[id]/milestones/route.ts": {
+      "lastModified": 1755242409097,
+      "size": 3669,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 4,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/auth",
+          "@/lib/supabase/server",
+          "@/types/milestones"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/[id]/pdf/route.ts": {
+      "lastModified": 1755241842758,
+      "size": 1829,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/auth",
+          "@/lib/supabase/server",
+          "@/lib/services/pdf"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/projects/pdf/route.ts": {
+      "lastModified": 1755156808585,
+      "size": 6618,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@supabase/auth-helpers-nextjs",
+          "next/headers",
+          "pdfkit",
+          "stream"
+        ],
+        "dependencies": [
+          "next",
+          "@supabase",
+          "pdfkit",
+          "stream"
+        ]
+      }
+    },
+    "app/api/projects/route.ts": {
+      "lastModified": 1755240908600,
+      "size": 2836,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 2,
+        "components": 0,
+        "integrations": 4,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/auth",
+          "@/lib/utils/validation"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "app/api/webhooks/stripe/route.ts": {
+      "lastModified": 1755105471638,
+      "size": 4588,
+      "type": "api",
+      "analysis": {
+        "apiEndpoints": 1,
+        "components": 0,
+        "integrations": 5,
+        "exports": [],
+        "imports": [
+          "next/server",
+          "@/lib/supabase/server",
+          "@/lib/stripe",
+          "stripe"
+        ],
+        "dependencies": [
+          "next",
+          "stripe"
+        ]
+      }
+    },
+    "components/.DS_Store": {
+      "lastModified": 1755316430901,
+      "size": 8196,
+      "type": "other"
+    },
+    "components/chat/RenovationChatbot.tsx": {
+      "lastModified": 1755105601456,
+      "size": 7380,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "RenovationChatbot"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/card",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/scroll-area",
+          "lucide-react",
+          "date-fns",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react",
+          "date-fns",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/chatbot/ChatbotWidget.tsx": {
+      "lastModified": 1755328980003,
+      "size": 10318,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "ChatbotWidget"
+        ],
+        "imports": [
+          "react",
+          "lucide-react",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/card",
+          "@/components/ui/scroll-area",
+          "@/components/ui/badge",
+          "./types"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react"
+        ]
+      }
+    },
+    "components/chatbot/LeadCaptureForm.tsx": {
+      "lastModified": 1755318737877,
+      "size": 8421,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "LeadCaptureForm"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/select",
+          "@/components/ui/textarea",
+          "./types"
+        ],
+        "dependencies": [
+          "react"
+        ]
+      }
+    },
+    "components/chatbot/SimpleChatbotWidget.tsx": {
+      "lastModified": 1755317024411,
+      "size": 2341,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "SimpleChatbotWidget"
+        ],
+        "imports": [
+          "react",
+          "lucide-react"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/chatbot/types.ts": {
+      "lastModified": 1755303472439,
+      "size": 1107,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "components/contractors/ContractorCard.tsx": {
+      "lastModified": 1755065035417,
+      "size": 4950,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "ContractorCard"
+        ],
+        "imports": [
+          "@/types/database",
+          "@/components/ui/card",
+          "@/components/ui/button",
+          "@/components/ui/badge",
+          "lucide-react"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/contractors/ContractorList.tsx": {
+      "lastModified": 1755273795715,
+      "size": 7945,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "ContractorList"
+        ],
+        "imports": [
+          "react",
+          "@/types/database",
+          "./ContractorCard",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/card",
+          "lucide-react",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/dashboard/AnalyticsDashboard.tsx": {
+      "lastModified": 1755315394706,
+      "size": 14260,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "AnalyticsDashboard"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/card",
+          "@/components/ui/tabs",
+          "@/components/ui/select",
+          "@/components/ui/badge",
+          "lucide-react"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react"
+        ]
+      }
+    },
+    "components/dashboard/MilestoneOverview.tsx": {
+      "lastModified": 1755242295213,
+      "size": 11074,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "MilestoneOverview"
+        ],
+        "imports": [
+          "@/components/ui/card",
+          "@/components/ui/badge",
+          "@/components/ui/button",
+          "date-fns",
+          "next/link"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/forms/IntakeForm.tsx": {
+      "lastModified": 1755274947535,
+      "size": 18394,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "IntakeForm"
+        ],
+        "imports": [
+          "react",
+          "react-hook-form",
+          "@hookform/resolvers/zod",
+          "@/lib/utils/validation",
+          "@/types/database",
+          "@/components/ui/button",
+          "@/components/ui/card",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/textarea",
+          "lucide-react"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/payments/EscrowPaymentForm.tsx": {
+      "lastModified": 1755105501819,
+      "size": 6769,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 2,
+        "exports": [
+          "EscrowPaymentForm"
+        ],
+        "imports": [
+          "react",
+          "@stripe/react-stripe-js",
+          "@/components/ui/button",
+          "@/components/ui/card",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/select",
+          "@/components/ui/textarea",
+          "@/lib/stripe",
+          "@/types/database",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "@stripe",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/payments/PaymentTransactionList.tsx": {
+      "lastModified": 1755105441914,
+      "size": 5568,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 1,
+        "exports": [
+          "PaymentTransactionList"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/card",
+          "@/components/ui/button",
+          "@/components/ui/badge",
+          "@/lib/stripe",
+          "@/types/database",
+          "date-fns",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "date-fns",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/projects/BudgetTracker.tsx": {
+      "lastModified": 1755065211693,
+      "size": 16115,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 3,
+        "exports": [
+          "BudgetTracker"
+        ],
+        "imports": [
+          "react",
+          "@/types/database",
+          "@/lib/supabase/client",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/textarea",
+          "@/components/ui/card",
+          "@/components/ui/badge",
+          "@/components/ui/dialog",
+          "lucide-react",
+          "@/lib/utils/validation",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/projects/FileUpload.tsx": {
+      "lastModified": 1755241264644,
+      "size": 13684,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "FileUpload"
+        ],
+        "imports": [
+          "react",
+          "react-dropzone",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/textarea",
+          "@/components/ui/card",
+          "@/components/ui/dialog",
+          "@/components/ui/badge",
+          "lucide-react",
+          "react-hot-toast",
+          "@/types/database",
+          "@/lib/utils/validation",
+          "@/lib/utils/date"
+        ],
+        "dependencies": [
+          "react",
+          "react-dropzone",
+          "lucide-react",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/projects/GanttChart.tsx": {
+      "lastModified": 1755242220096,
+      "size": 10941,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "GanttChart"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/card",
+          "@/components/ui/badge",
+          "@/components/ui/button",
+          "lucide-react",
+          "date-fns",
+          "@/components/projects/ProjectTimeline"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/projects/MessageThread.tsx": {
+      "lastModified": 1755241020953,
+      "size": 8137,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 3,
+        "exports": [
+          "MessageThread"
+        ],
+        "imports": [
+          "react",
+          "@/types/database",
+          "@/lib/supabase/client",
+          "@/components/ui/button",
+          "@/components/ui/textarea",
+          "@/components/ui/card",
+          "@/components/ui/badge",
+          "@/components/ui/avatar",
+          "lucide-react",
+          "@/lib/utils/date",
+          "@/lib/hooks/useRealtime",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "react",
+          "lucide-react",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "components/projects/ProjectTimeline.tsx": {
+      "lastModified": 1755242156620,
+      "size": 18614,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "ProjectTimeline"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/card",
+          "@/components/ui/button",
+          "@/components/ui/badge",
+          "@/components/ui/dialog",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/textarea",
+          "@/components/ui/select",
+          "date-fns"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/providers/StripeProvider.tsx": {
+      "lastModified": 1755105423175,
+      "size": 443,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 2,
+        "exports": [
+          "StripeProvider"
+        ],
+        "imports": [
+          "@stripe/react-stripe-js",
+          "@stripe/stripe-js"
+        ],
+        "dependencies": [
+          "@stripe"
+        ]
+      }
+    },
+    "components/search/SearchFilters.tsx": {
+      "lastModified": 1755273805574,
+      "size": 13514,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 1,
+        "integrations": 0,
+        "exports": [
+          "SearchFilters"
+        ],
+        "imports": [
+          "react",
+          "@/components/ui/button",
+          "@/components/ui/input",
+          "@/components/ui/label",
+          "@/components/ui/card",
+          "@/components/ui/badge",
+          "@/components/ui/collapsible"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/avatar.tsx": {
+      "lastModified": 1755065142469,
+      "size": 1403,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-avatar",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/badge.tsx": {
+      "lastModified": 1755065044210,
+      "size": 1126,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "class-variance-authority",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/button.tsx": {
+      "lastModified": 1755064842398,
+      "size": 1833,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-slot",
+          "class-variance-authority",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/card.tsx": {
+      "lastModified": 1755064909725,
+      "size": 1847,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/checkbox.tsx": {
+      "lastModified": 1755146684814,
+      "size": 1069,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-checkbox",
+          "lucide-react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/collapsible.tsx": {
+      "lastModified": 1755241911703,
+      "size": 359,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-collapsible"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/dialog.tsx": {
+      "lastModified": 1755065229295,
+      "size": 3854,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-dialog",
+          "lucide-react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/input.tsx": {
+      "lastModified": 1755064889305,
+      "size": 822,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/label.tsx": {
+      "lastModified": 1755064894763,
+      "size": 708,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-label",
+          "class-variance-authority",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/scroll-area.tsx": {
+      "lastModified": 1755105609817,
+      "size": 1655,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-scroll-area",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/select.tsx": {
+      "lastModified": 1755105497619,
+      "size": 5628,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-select",
+          "lucide-react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/tabs.tsx": {
+      "lastModified": 1755065293557,
+      "size": 1881,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@radix-ui/react-tabs",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "components/ui/textarea.tsx": {
+      "lastModified": 1755064900827,
+      "size": 770,
+      "type": "component",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "react",
+          "@/lib/utils"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/.DS_Store": {
+      "lastModified": 1755315163910,
+      "size": 6148,
+      "type": "other"
+    },
+    "lib/auth.ts": {
+      "lastModified": 1755240837037,
+      "size": 2184,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 7,
+        "exports": [],
+        "imports": [
+          "./supabase/server",
+          "./supabase/client",
+          "./supabase/database",
+          "next/navigation"
+        ],
+        "dependencies": [
+          "next"
+        ]
+      }
+    },
+    "lib/hooks/useMessages.ts": {
+      "lastModified": 1755241775144,
+      "size": 6219,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "@tanstack/react-query",
+          "@/lib/supabase/client",
+          "@/types/database",
+          "./useRealtime",
+          "react-hot-toast",
+          "react"
+        ],
+        "dependencies": [
+          "@tanstack",
+          "react-hot-toast",
+          "react"
+        ]
+      }
+    },
+    "lib/hooks/useMilestones.ts": {
+      "lastModified": 1755242179400,
+      "size": 5681,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "@tanstack/react-query",
+          "@/lib/supabase/client",
+          "@/components/projects/ProjectTimeline"
+        ],
+        "dependencies": [
+          "@tanstack"
+        ]
+      }
+    },
+    "lib/hooks/useProjects.ts": {
+      "lastModified": 1755241752681,
+      "size": 4832,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "@tanstack/react-query",
+          "@/lib/supabase/client",
+          "@/types/database",
+          "react-hot-toast"
+        ],
+        "dependencies": [
+          "@tanstack",
+          "react-hot-toast"
+        ]
+      }
+    },
+    "lib/hooks/useRealtime.ts": {
+      "lastModified": 1755240990806,
+      "size": 4370,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 7,
+        "exports": [],
+        "imports": [
+          "react",
+          "@/lib/supabase/client",
+          "@supabase/supabase-js"
+        ],
+        "dependencies": [
+          "react",
+          "@supabase"
+        ]
+      }
+    },
+    "lib/openai.ts": {
+      "lastModified": 1755105638259,
+      "size": 9846,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "openai"
+        ],
+        "dependencies": [
+          "openai"
+        ]
+      }
+    },
+    "lib/providers/query-provider.tsx": {
+      "lastModified": 1755274925771,
+      "size": 893,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "@tanstack/react-query",
+          "react"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/services/analytics.ts": {
+      "lastModified": 1755303663117,
+      "size": 9462,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 3,
+        "exports": [],
+        "imports": [
+          "@/lib/supabase/server"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/services/email.ts": {
+      "lastModified": 1755241317151,
+      "size": 7876,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [
+          "resend"
+        ],
+        "dependencies": [
+          "resend"
+        ]
+      }
+    },
+    "lib/services/notificationapi.ts": {
+      "lastModified": 1755361897855,
+      "size": 6011,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [
+          "notificationapi-node-server-sdk"
+        ],
+        "dependencies": [
+          "notificationapi-node-server-sdk"
+        ]
+      }
+    },
+    "lib/services/notifications.ts": {
+      "lastModified": 1755303818065,
+      "size": 11105,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "lib/services/pdf.ts": {
+      "lastModified": 1755241820553,
+      "size": 9104,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "@/types/database"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/services/sms.ts": {
+      "lastModified": 1755241339172,
+      "size": 4619,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "twilio"
+        ],
+        "dependencies": [
+          "twilio"
+        ]
+      }
+    },
+    "lib/stripe.ts": {
+      "lastModified": 1755105475154,
+      "size": 5716,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 1,
+        "exports": [],
+        "imports": [
+          "stripe"
+        ],
+        "dependencies": [
+          "stripe"
+        ]
+      }
+    },
+    "lib/supabase/client.ts": {
+      "lastModified": 1755064749712,
+      "size": 211,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 2,
+        "exports": [],
+        "imports": [
+          "@supabase/ssr"
+        ],
+        "dependencies": [
+          "@supabase"
+        ]
+      }
+    },
+    "lib/supabase/database.ts": {
+      "lastModified": 1755240817017,
+      "size": 4717,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 13,
+        "exports": [],
+        "imports": [
+          "./server",
+          "@/types/database"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/supabase/migrations/008_create_milestones_table.sql": {
+      "lastModified": 1755242313558,
+      "size": 3665,
+      "type": "database"
+    },
+    "lib/supabase/server.ts": {
+      "lastModified": 1755065421381,
+      "size": 697,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 2,
+        "exports": [],
+        "imports": [
+          "@supabase/ssr",
+          "next/headers"
+        ],
+        "dependencies": [
+          "@supabase",
+          "next"
+        ]
+      }
+    },
+    "lib/utils/date.ts": {
+      "lastModified": 1755064793120,
+      "size": 1158,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "date-fns"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/utils/index.ts": {
+      "lastModified": 1755064833085,
+      "size": 218,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "clsx",
+          "tailwind-merge"
+        ],
+        "dependencies": []
+      }
+    },
+    "lib/utils/validation.ts": {
+      "lastModified": 1755273716905,
+      "size": 3381,
+      "type": "library",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [
+          "zod"
+        ],
+        "dependencies": []
+      }
+    },
+    "public/content/chatbot-prompt.md": {
+      "lastModified": 1755327515751,
+      "size": 8417,
+      "type": "markdown",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "public/content/faq.md": {
+      "lastModified": 1755323036145,
+      "size": 23859,
+      "type": "markdown",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "types/database.ts": {
+      "lastModified": 1755105288284,
+      "size": 7716,
+      "type": "typescript",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "types/milestones.ts": {
+      "lastModified": 1755242393385,
+      "size": 1564,
+      "type": "typescript",
+      "analysis": {
+        "apiEndpoints": 0,
+        "components": 0,
+        "integrations": 0,
+        "exports": [],
+        "imports": [],
+        "dependencies": []
+      }
+    },
+    "database/chatbot-tables.sql": {
+      "lastModified": 1755303618742,
+      "size": 4622,
+      "type": "database"
+    },
+    "database/migrate-to-v2.sql": {
+      "lastModified": 1755105149509,
+      "size": 17121,
+      "type": "database"
+    },
+    "database/rls-policies.sql": {
+      "lastModified": 1755156547787,
+      "size": 10140,
+      "type": "database"
+    },
+    "database/schema.sql": {
+      "lastModified": 1755535550030,
+      "size": 10168,
+      "type": "database"
+    }
+  },
+  "stats": {
+    "totalFiles": 84,
+    "apiEndpoints": 32,
+    "components": 18,
+    "integrations": 126,
+    "changedFiles": 0
+  }
+}

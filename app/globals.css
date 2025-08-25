@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 352.65 51.43% 51.76%; /* brand-terracotta */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 144.71 17.95% 60.00%; /* brand-sage */
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 39.13 37.04% 92.75%; /* brand-sand */
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 39.13 37.04% 92.75%; /* brand-sand */
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 352.65 51.43% 51.76%; /* brand-terracotta */
+    --radius: 0.5rem;
+    
+    /* Custom brand colors as CSS variables */
+    --brand-terracotta: #c1414f;
+    --brand-terracotta-light: #d66570;
+    --brand-terracotta-dark: #9e3540;
+    --brand-sage: #7c9885;
+    --brand-sage-light: #95ad9e;
+    --brand-sage-dark: #627a6a;
+    --brand-cream: #faf7f2;
+    --brand-warm-white: #fffdf9;
+    --brand-sand: #f5e9d3;
+    --brand-clay: #d4a574;
+    --brand-navy: #2c3e50;
+    --brand-navy-light: #34495e;
+    --brand-navy-dark: #1a252f;
+    --brand-stone: #8b8680;
+    --brand-stone-light: #a8a39e;
+    --brand-stone-dark: #6b6762;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Force brand colors to appear */
+.bg-brand-terracotta {
+  background-color: #c1414f !important;
+}
+.bg-brand-terracotta-dark {
+  background-color: #9e3540 !important;
+}
+.bg-brand-sage {
+  background-color: #7c9885 !important;
+}
+.bg-brand-navy {
+  background-color: #2c3e50 !important;
+}
+.text-brand-terracotta {
+  color: #c1414f !important;
+}
+.text-brand-navy {
+  color: #2c3e50 !important;
+}
+.text-brand-sage-dark {
+  color: #627a6a !important;
+}
+.text-brand-stone {
+  color: #8b8680 !important;
+}
+.text-brand-stone-dark {
+  color: #6b6762 !important;
+}
+.border-brand-sand {
+  border-color: #f5e9d3 !important;
+}
+
+/* Hide Next.js development indicator */
+[data-nextjs-portal] {
+  display: none !important;
+}
+
+/* Hide Turbopack and all Next.js dev indicators */
+[data-turbopack] {
+  display: none !important;
+}
+
+[data-nextjs-devtool] {
+  display: none !important;
+}
+
+[data-nextjs-dev-overlay] {
+  display: none !important;
+}
+
+/* Hide any dev indicators with common patterns */
+div[style*="position: fixed"][style*="z-index"]:has(svg) {
+  display: none !important;
+}
+
+/* More specific selectors for Turbopack icon */
+button[style*="position: fixed"][style*="bottom"] {
+  display: none !important;
+}
+
+div[style*="position: fixed"][style*="bottom: 10px"] {
+  display: none !important;
+}
+
+/* Ensure all checkboxes maintain square shape and proper styling */
+[role="checkbox"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 20px !important;
+  width: 20px !important;
+  min-height: 20px !important;
+  min-width: 20px !important;
+  flex-shrink: 0 !important;
+  border-radius: 0.375rem !important;
+  border-width: 2px !important;
+  transition: all 0.2s ease !important;
+}
+
+[role="checkbox"]:not([data-state="checked"]) {
+  background-color: white !important;
+  border-color: rgb(156, 163, 175) !important;
+}
+
+[role="checkbox"][data-state="checked"] {
+  background-color: rgb(37, 99, 235) !important;
+  border-color: rgb(37, 99, 235) !important;
+  color: white !important;
+}
+
+/* Hover states */
+[role="checkbox"]:not([data-state="checked"]):hover {
+  background-color: rgb(249, 250, 251) !important;
+  border-color: rgb(107, 114, 128) !important;
+}
+
+/* Prevent any container from flattening checkboxes */
+.checkbox-container,
+[data-checkbox-wrapper],
+.flex-row:has([role="checkbox"]) {
+  align-items: center !important;
+}
+
+/* Ensure flex containers don't compress checkboxes */
+[role="checkbox"] {
+  box-sizing: border-box !important;
+}

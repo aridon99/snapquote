@@ -1,0 +1,35 @@
+{
+  "scanIntervalMs": 30000,
+  "enableGitIntegration": true,
+  "watchDirectories": [
+    "app/api",
+    "components",
+    "lib",
+    "public/content",
+    "types",
+    "database"
+  ],
+  "documentationFiles": [
+    "ARCHITECTURE.md",
+    "docs/API_ENDPOINTS.md", 
+    "docs/COMPONENTS.md",
+    "docs/INTEGRATIONS.md"
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    ".git",
+    "dist",
+    "build",
+    "test-results",
+    "playwright-report",
+    ".arch-monitor"
+  ],
+  "notifications": {
+    "enabled": false,
+    "onChanges": true,
+    "onErrors": true
+  },
+  "autoCommit": false,
+  "verbose": true
+}
