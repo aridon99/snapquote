@@ -214,7 +214,7 @@ class TestLogger {
 
   private async persistLog(entry: TestLogEntry): Promise<void> {
     try {
-      const supabase = createClient()
+      const supabase = await createClient()
       
       // Store in test_logs table (will be created in schema)
       await supabase.from('test_logs').insert({

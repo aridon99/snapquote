@@ -149,7 +149,7 @@ function extractContactInfo(conversationHistory: any[]): {
         const phoneMatch = message.content.match(phonePattern)
         if (phoneMatch) {
           phone = phoneMatch[1].replace(/[-.\s\(\)]/g, '').replace(/^1/, '+1')
-          if (!phone.startsWith('+1')) phone = '+1' + phone
+          if (phone && !phone.startsWith('+1')) phone = '+1' + phone
         }
       }
       
@@ -332,7 +332,7 @@ Current user message: "${message}"`
         responseLength: responseMessage.length
       },
       session_id: sessionId,
-      user_agent: request.headers.get('user-agent'),
+      user_agent: request.headers.get('user-agent') || undefined,
       ip_address: request.headers.get('x-forwarded-for') || 'unknown'
     })
 

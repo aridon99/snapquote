@@ -33,7 +33,7 @@ export async function getTwilioCredentials(): Promise<TwilioCredentials> {
   }
 
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     
     // Call the secure function to get Twilio credentials
     const { data, error } = await supabase.rpc('get_twilio_credentials')
@@ -82,7 +82,7 @@ export async function getOpenAIKey(): Promise<string> {
   }
 
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     
     // Call the secure function to get OpenAI key
     const { data, error } = await supabase.rpc('get_openai_key')

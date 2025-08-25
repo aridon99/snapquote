@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   await testLogger.testStart('quote-system', 'edit', 'Starting quote edit API call')
   
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const body = await request.json()
     
     await testLogger.apiCall('/api/quotes/edit', 'POST', {
@@ -225,7 +225,7 @@ export async function POST(request: NextRequest) {
         category: item.category,
         notes: item.notes,
         display_order: index,
-        confidence_score: item.confidence_score || 0.9
+        confidence_score: (item as any).confidence_score || 0.9
       }))
 
       await testLogger.dbOperation('insert', 'quote_items', 

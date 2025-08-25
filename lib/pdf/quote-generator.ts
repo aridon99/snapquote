@@ -4,7 +4,7 @@ import { Quote, QuoteItem, QuoteTemplate } from '@/types/quotes'
 import { plumberQuoteTemplate } from './templates/plumber-quote'
 
 export class QuoteGenerator {
-  private doc: PDFDocument
+  private doc: InstanceType<typeof PDFDocument>
   private quote: Quote
   private items: QuoteItem[]
   private template: QuoteTemplate
@@ -227,7 +227,7 @@ export class QuoteGenerator {
     
     Object.entries(groupedItems).forEach(([category, items]) => {
       // Category header
-      const categoryName = plumberQuoteTemplate.categories[category] || category
+      const categoryName = (plumberQuoteTemplate.categories as any)[category] || category
       this.doc
         .fillColor(colors.secondary)
         .fontSize(fontSize.normal)

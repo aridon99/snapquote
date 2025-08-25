@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       event_type,
       event_data: event_data || {},
       session_id: session_id || request.headers.get('x-session-id'),
-      user_agent: userAgent,
+      user_agent: userAgent || undefined,
       ip_address: ipAddress
     })
 

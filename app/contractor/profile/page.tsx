@@ -153,7 +153,11 @@ export default function ContractorProfile() {
           })
       }
 
-      setContractor(prev => prev ? { ...prev, ...formData } : null)
+      setContractor(prev => prev ? { 
+        ...prev, 
+        ...formData,
+        service_areas: formData.service_areas.split(',').map(area => area.trim()).filter(Boolean)
+      } : null)
       toast.success('Profile updated successfully!')
       
       // Refresh the page data

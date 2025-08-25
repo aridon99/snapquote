@@ -314,9 +314,9 @@ class AnalyticsService {
 
       // Calculate metrics
       const totalConversations = data.length
-      const leadsGenerated = data.filter(c => c.lead_captured).length
-      const avgDuration = data.reduce((sum, c) => sum + (c.duration_seconds || 0), 0) / totalConversations
-      const avgMessages = data.reduce((sum, c) => sum + (c.total_messages || 0), 0) / totalConversations
+      const leadsGenerated = data.filter((c: any) => c.lead_captured).length
+      const avgDuration = data.reduce((sum: number, c: any) => sum + (c.duration_seconds || 0), 0) / totalConversations
+      const avgMessages = data.reduce((sum: number, c: any) => sum + (c.total_messages || 0), 0) / totalConversations
 
       return {
         totalConversations,

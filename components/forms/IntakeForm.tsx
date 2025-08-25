@@ -57,7 +57,7 @@ export function IntakeForm({ onSubmit }: IntakeFormProps) {
   const fileInputRef = useRef<HTMLInputElement>(null)
   
   const form = useForm<IntakeFormData>({
-    resolver: zodResolver(intakeFormSchema),
+    resolver: zodResolver(intakeFormSchema) as any,
     mode: 'onChange', // Enable real-time validation
     defaultValues: {
       title: '',
@@ -189,7 +189,7 @@ export function IntakeForm({ onSubmit }: IntakeFormProps) {
     }
     
     console.log(`Validating step ${currentStep} fields:`, fieldsToValidate)
-    const isValid = await form.trigger(fieldsToValidate)
+    const isValid = await form.trigger(fieldsToValidate as any)
     console.log(`Step ${currentStep} validation result:`, isValid)
     
     if (!isValid) {

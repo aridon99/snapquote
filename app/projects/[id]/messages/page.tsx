@@ -130,7 +130,7 @@ export default async function ProjectMessagesPage({ params }: ProjectMessagesPag
                 <div>
                   <strong>Project Type:</strong>
                   <div className="flex flex-wrap gap-1 mt-1">
-                    {project.project_type?.map((type, index) => (
+                    {project.project_type?.map((type: string, index: number) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         {type}
                       </Badge>

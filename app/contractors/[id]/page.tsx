@@ -190,7 +190,7 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
                 <div>
                   <label className="text-sm font-medium text-gray-600">Service Areas</label>
                   <div className="flex flex-wrap gap-1 mt-1">
-                    {contractor.service_areas?.map((area, index) => (
+                    {contractor.service_areas?.map((area: string, index: number) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         <MapPin className="w-3 h-3 mr-1" />
                         {area}
@@ -307,7 +307,7 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-2">Specialties</h4>
                           <div className="flex flex-wrap gap-2">
-                            {contractor.specialties?.map((specialty, index) => (
+                            {contractor.specialties?.map((specialty: string, index: number) => (
                               <Badge key={index} variant="secondary">
                                 {specialty}
                               </Badge>
@@ -319,7 +319,7 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
                           <div>
                             <h4 className="font-semibold text-gray-900 mb-2">Tags</h4>
                             <div className="flex flex-wrap gap-2">
-                              {contractor.tags.map((tag, index) => (
+                              {contractor.tags.map((tag: string, index: number) => (
                                 <Badge key={index} variant="outline">
                                   {tag}
                                 </Badge>

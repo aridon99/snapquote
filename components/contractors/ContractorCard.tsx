@@ -45,7 +45,7 @@ export function ContractorCard({ contractor, onSelect }: ContractorCardProps) {
       <CardHeader className="pb-4">
         <div className="flex items-start gap-4">
           <Avatar className="h-12 w-12">
-            <AvatarImage src={contractor.avatar_url} alt={contractor.business_name} />
+            <AvatarImage src={(contractor as any).avatar_url} alt={contractor.business_name} />
             <AvatarFallback className="bg-primary/10 text-primary font-semibold">
               {contractor.business_name.split(' ').map(n => n[0]).join('').slice(0, 2)}
             </AvatarFallback>
@@ -54,7 +54,7 @@ export function ContractorCard({ contractor, onSelect }: ContractorCardProps) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <CardTitle className="text-lg truncate">{contractor.business_name}</CardTitle>
-              {contractor.verified_at && (
+              {(contractor as any).verified_at && (
                 <Verified className="h-4 w-4 text-blue-500 flex-shrink-0" />
               )}
             </div>

@@ -14,7 +14,14 @@ export interface ValidationResult {
 
 export class TestValidator {
   private static instance: TestValidator
-  private supabase = createClient()
+  private supabaseClient: any = null
+
+  private async getSupabaseClient() {
+    if (!this.supabaseClient) {
+      this.supabaseClient = await createClient()
+    }
+    return this.supabaseClient
+  }
 
   static getInstance(): TestValidator {
     if (!TestValidator.instance) {
@@ -173,7 +180,8 @@ export class TestValidator {
 
   // Individual validation functions
   private async validateDatabaseConnection(): Promise<any> {
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient()
+    const { data, error } = await supabase
       .from('contractors')
       .select('count')
       .limit(1)
@@ -183,7 +191,8 @@ export class TestValidator {
   }
 
   private async validateSupabaseStorage(): Promise<any> {
-    const { data, error } = await this.supabase.storage
+    const supabase = await this.getSupabaseClient()
+    const { data, error } = await supabase.storage
       .from('documents')
       .list('', { limit: 1 })
     
@@ -196,8 +205,8 @@ export class TestValidator {
   private async validateApiKeyRetrieval(): Promise<any> {
     try {
       // Test the secure API key functions
-      const { data: twilioData, error: twilioError } = await this.supabase.rpc('get_twilio_credentials')
-      const { data: openaiData, error: openaiError } = await this.supabase.rpc('get_openai_key')
+      const { data: twilioData, error: twilioError } = (await this.getSupabaseClient()).rpc('get_twilio_credentials')
+      const { data: openaiData, error: openaiError } = (await this.getSupabaseClient()).rpc('get_openai_key')
 
       if (twilioError && openaiError) {
         throw new Error('Both API key retrievals failed')
@@ -271,7 +280,7 @@ export class TestValidator {
       }
 
       // Create a test session first
-      const { data: session } = await this.supabase
+      const { data: session } = (await this.getSupabaseClient())
         .from('quote_review_sessions')
         .insert({
           quote_id: quoteResult.quote_id,
@@ -300,7 +309,7 @@ export class TestValidator {
       const result = await response.json()
       
       // Clean up test session
-      await this.supabase
+      (await this.getSupabaseClient())
         .from('quote_review_sessions')
         .delete()
         .eq('id', session.id)
@@ -354,7 +363,7 @@ export class TestValidator {
   private async validateRLSPolicies(): Promise<any> {
     try {
       // Test that RLS policies are working by trying to access data
-      const { error } = await this.supabase
+      const { error } = (await this.getSupabaseClient())
         .from('quotes')
         .select('count')
         .limit(1)
@@ -387,7 +396,7 @@ export class TestValidator {
 
   // Helper methods
   private async getValidationItems(): Promise<TestValidationItem[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = (await this.getSupabaseClient())
       .from('test_validation_items')
       .select('*')
       .order('id')
@@ -434,8 +443,8 @@ export class TestValidator {
       completion_percentage: number
     }
   }> {
-    const { data: overview } = await this.supabase.rpc('get_validation_overview').single()
-    const { data: items } = await this.supabase
+    const { data: overview } = (await this.getSupabaseClient()).rpc('get_validation_overview').single()
+    const { data: items } = (await this.getSupabaseClient())
       .from('test_validation_items')
       .select('*')
       .order('id')

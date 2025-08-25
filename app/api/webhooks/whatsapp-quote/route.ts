@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.text()
     const webhookData = parseWebhookBody(body)
-    const supabase = createClient()
+    const supabase = await createClient()
     
     await testLogger.webhookEvent('whatsapp_message', {
       from: webhookData.From,

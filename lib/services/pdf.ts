@@ -273,7 +273,7 @@ export async function generateProjectBriefPDF(data: ProjectBriefData): Promise<B
     
     await browser.close()
     
-    return pdf
+    return Buffer.from(pdf)
   } catch (error) {
     console.error('PDF generation error:', error)
     throw new Error('Failed to generate PDF')

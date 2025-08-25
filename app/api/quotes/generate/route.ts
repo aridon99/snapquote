@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
   await testLogger.testStart('quote-system', 'generation', 'Starting quote generation API call')
   
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const body = await request.json()
     
     await testLogger.apiCall('/api/quotes/generate', 'POST', {
@@ -267,7 +267,7 @@ export async function GET(request: NextRequest) {
   await testLogger.testStart('quote-system', 'retrieval', 'Starting quote retrieval API call')
   
   try {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { searchParams } = new URL(request.url)
     const quoteId = searchParams.get('id')
     
