@@ -5,12 +5,12 @@ import { generateProjectBriefPDF, ProjectBriefData } from '@/lib/services/pdf'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params) {
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const projectId = params.id
+    const projectId = id
     
     // Verify user owns this project
     const { data: project, error: projectError } = await supabase

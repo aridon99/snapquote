@@ -6,12 +6,12 @@ import { isMilestoneStatus, isMilestoneType } from '@/types/milestones'
 // GET /api/projects/[id]/milestones - Get all milestones for a project
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params) {
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const projectId = params.id
+    const projectId = id
     
     // Verify user has access to this project
     const { data: project, error: projectError } = await supabase
@@ -54,12 +54,12 @@ export async function GET(
 // POST /api/projects/[id]/milestones - Create a new milestone
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> }
+  const { id } = await params) {
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const projectId = params.id
+    const projectId = id
     
     // Verify user has access to this project
     const { data: project, error: projectError } = await supabase
