@@ -122,7 +122,7 @@ export default function DashboardPage() {
     }
   ]
 
-  const activeProjects = kanbanProjects.filter(p => p.status !== 'completed')
+  const activeProjects = kanbanProjects.filter(p => p.status !== 'completed' as any)
 
   // Convert kanban projects to budget transfer format
   const budgetProjects = kanbanProjects.map(project => ({
