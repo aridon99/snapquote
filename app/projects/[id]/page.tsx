@@ -27,13 +27,14 @@ import Link from 'next/link'
 import { formatDateRelative } from '@/lib/utils/date'
 
 interface ProjectPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { id } = await params
   const { user, profile } = await requireHomeowner()
   
-  const { data: project, error } = await getProject(params.id)
+  const { data: project, error } = await getProject(id)
   
   if (error || !project) {
     notFound()

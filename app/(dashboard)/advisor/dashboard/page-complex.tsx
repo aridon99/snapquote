@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createClient } from '@/lib/supabase/client'
 import { ProjectProvider, useProjectContext } from '@/lib/providers/project-context'
 import { ProjectSwitcher } from '@/components/dashboard/ProjectSwitcher'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -65,6 +66,7 @@ interface ContractorPerformance {
 }
 
 function AdvisorDashboardContent() {
+  const supabase = createClient()
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('overview')
   const [projects, setProjects] = useState<ProjectOverview[]>([])
@@ -374,9 +376,9 @@ function AdvisorDashboardContent() {
                           <div className="flex justify-between items-start">
                             <div className="space-y-1">
                               <div className="flex items-center gap-2 mb-1">
-                                {project.reference_code && (
+                                {project.id && (
                                   <Badge variant="outline" className="text-xs font-mono">
-                                    {project.reference_code}
+                                    {project.id.slice(0, 8)}
                                   </Badge>
                                 )}
                                 <CardTitle className="text-lg">{project.title}</CardTitle>

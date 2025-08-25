@@ -22,16 +22,17 @@ import Link from 'next/link'
 import { Contractor } from '@/types/database'
 
 interface ContractorPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default async function ContractorPage({ params }: ContractorPageProps) {
+  const { id } = await params
   const supabase = await createClient()
   
   const { data: contractor, error } = await supabase
     .from('contractors')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('is_active', true)
     .single()
   
