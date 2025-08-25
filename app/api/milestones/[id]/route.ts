@@ -6,12 +6,13 @@ import { isMilestoneStatus, isMilestoneType } from '@/types/milestones'
 // GET /api/milestones/[id] - Get a specific milestone
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const milestoneId = params.id
+    const milestoneId = id
     
     // Get milestone with project info to check permissions
     const { data: milestone, error } = await supabase
@@ -47,12 +48,13 @@ export async function GET(
 // PUT /api/milestones/[id] - Update a milestone
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const milestoneId = params.id
+    const milestoneId = id
     
     // Get milestone with project info to check permissions
     const { data: milestone, error: fetchError } = await supabase
@@ -136,12 +138,13 @@ export async function PUT(
 // DELETE /api/milestones/[id] - Delete a milestone
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     const user = await requireAuth()
     const supabase = await createClient()
-    const milestoneId = params.id
+    const milestoneId = id
     
     // Get milestone with project info to check permissions
     const { data: milestone, error: fetchError } = await supabase
