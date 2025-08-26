@@ -1,3 +1,5 @@
+'use client'
+
 import { SearchFilters } from '@/components/search/SearchFilters'
 import { ContractorList } from '@/components/contractors/ContractorList'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
