@@ -1,0 +1,9 @@
+BUILD_VERSION: 956ca1b-FIXED
+BUILD_TIME: 2025-08-25T22:30:00Z
+STATUS: DEPLOYMENT_READY
+MARKERS: AFTER_RECOMMENDATIONS_REMOVAL
+FIXES_APPLIED:
+- Removed problematic recommendations API route
+- Fixed search page client component  
+- Added health check endpoints
+- Build verified locally
