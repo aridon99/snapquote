@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   try {
     const response = NextResponse.json({
       success: true,
-      message: 'API is working correctly!',
+      message: 'API is working correctly! (Fix #11)',
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'unknown'
     });
