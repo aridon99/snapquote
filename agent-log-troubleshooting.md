@@ -18,7 +18,24 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
-## [2025-08-29 Current] - Next.js 15 TypeScript Parameter Compatibility
+## [2025-08-29 Current] - TypeScript Unknown Error Type in Catch Block
+
+**Problem:** Build failed with "'error' is of type 'unknown'"
+
+**Root Cause:** TypeScript strict mode - catch blocks have unknown error types
+
+**Solution:** Added instanceof Error type guard before accessing error properties
+
+**Files Modified:**
+- app/api/contractors/signup/route.ts:248
+
+**Status:** RESOLVED
+
+**Additional Notes:** This is the 8th fix attempt. TypeScript requires explicit type checking for error objects.
+
+---
+
+## [2025-08-29] - Next.js 15 TypeScript Parameter Compatibility
 
 **Problem:** Deployment failing due to TypeScript error in contractor status API route. The application was unable to build successfully, blocking deployment to production.
 

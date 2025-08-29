@@ -244,17 +244,19 @@ export async function POST(request: NextRequest) {
     console.error('Contractor signup error:', error);
     
     // More detailed error logging for debugging
-    console.error('Error details:', {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
-    });
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      });
+    }
     
     const errorResponse = NextResponse.json(
       { 
         success: false, 
         message: 'Internal server error. Please try again.',
-        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+        error: process.env.NODE_ENV === 'development' && error instanceof Error ? error.message : undefined
       },
       { status: 500 }
     );

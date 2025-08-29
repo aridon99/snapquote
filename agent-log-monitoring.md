@@ -25,7 +25,24 @@ This file tracks deployment monitoring results to provide context for iterative 
 
 ## Latest Monitoring Result
 
-## [2025-08-29 Current] - Deployment Check #7
+## [2025-08-29 Current] - Deployment Check #8
+**Deployment ID:** EChtzJ473
+**Commit:** ed4f0cc
+**Status:** ERROR
+**Build Time:** 1m 6s
+**Error Details:**
+  - File: app/api/contractors/signup/route.ts
+  - Line: 248
+  - Type: TypeScript
+  - Message: 'error' is of type 'unknown'
+**Fix Applied:** Added type guard `error instanceof Error` check
+**Result:** Pending verification
+
+---
+
+## Historical Monitoring Results
+
+## [2025-08-29] - Deployment Check #7
 **Deployment ID:** 9tGvKzwwx
 **Commit:** 2d57d7a
 **Status:** ERROR
@@ -36,11 +53,7 @@ This file tracks deployment monitoring results to provide context for iterative 
   - Type: TypeScript
   - Message: Type 'string | null' is not assignable to type 'string | undefined'
 **Fix Applied:** Convert null to undefined with `audioTranscription || undefined`
-**Result:** Pending verification
-
----
-
-## Historical Monitoring Results
+**Result:** Fixed null vs undefined issue, revealed unknown error type issue
 
 ## [2025-08-29] - Deployment Check #6
 **Deployment ID:** VT72yne2G
@@ -136,18 +149,18 @@ This file tracks deployment monitoring results to provide context for iterative 
    - API response format assumptions (text vs object) (5% of errors)
 
 3. **Fix Success Rate:**
-   - 7 attempts made
+   - 8 attempts made
    - Each fix resolves its specific issue
    - Sequential errors revealed due to build stopping at first error
-   - Null vs undefined TypeScript strict mode issues emerging
+   - TypeScript strict mode issues with error handling emerging
 
 ---
 
 ## Next Monitoring Expected
 
-**Commit to Monitor:** 2d57d7a (Fix null vs undefined TypeScript issue - attempt #7)
+**Commit to Monitor:** ed4f0cc (Fix unknown error type with instanceof guard - attempt #8)
 **Expected Outcomes:**
-- ✅ SUCCESS: Build completes if null to undefined conversion worked
+- ✅ SUCCESS: Build completes if error type guard resolves unknown error issue
 - ❌ ERROR: Likely another TypeScript strict mode issue if pattern continues
 
 **Pre-check Actions:**
