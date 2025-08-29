@@ -192,8 +192,10 @@ async function generateQuotePDF(contractorData: any, quoteData: any): Promise<st
         confidence_score: quoteData.confidence_score,
         created_at: new Date().toISOString()
       })
-      .then(() => console.log('Quote data saved to database'))
-      .catch(error => console.error('Database insert error:', error));
+      .then(
+        () => console.log('Quote data saved to database'),
+        error => console.error('Database insert error:', error)
+      );
     
     const processingTime = Date.now() - startTime;
     console.log(`PDF generation completed in ${processingTime}ms for ${displayName}`);

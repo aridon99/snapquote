@@ -11,7 +11,9 @@
     "type-check": "tsc --noEmit",
     "arch:monitor": "node scripts/architecture-monitor.js monitor",
     "arch:scan": "node scripts/architecture-monitor.js scan",
-    "arch:help": "node scripts/architecture-monitor.js help"
+    "arch:help": "node scripts/architecture-monitor.js help",
+    "vercel:monitor": "node scripts/monitor-vercel-deployment.js",
+    "vercel:test": "node scripts/test-monitor-setup.js"
   },
   "keywords": [],
   "author": "",

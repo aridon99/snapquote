@@ -107,6 +107,23 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - TypeScript Promise Chain Method Compatibility
+
+**Problem:** Build failed with "Property 'catch' does not exist on type 'PromiseLike<void>'"
+
+**Root Cause:** TypeScript strict typing - .then() returns PromiseLike which doesn't have .catch() method. Need to use the two-parameter form of .then() for error handling.
+
+**Solution:** Changed from .then().catch() pattern to .then(success, error) pattern which is TypeScript compliant
+
+**Files Modified:**
+- app/api/contractors/quick-win-quote/route.ts
+
+**Status:** RESOLVED
+
+**Additional Notes:** This is the 6th fix attempt. The pattern shows TypeScript in Next.js 15 is very strict about Promise typing.
+
+---
+
 ## Template for Future Entries
 
 ```

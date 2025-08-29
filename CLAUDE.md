@@ -18,11 +18,19 @@ The Renovation Advisor Platform (SnapQuote) is a Next.js 15 application that pro
 ## Troubleshooting Protocol
 
 ### IMPORTANT: Before Attempting Any Troubleshooting
-**ALWAYS check `agent-log-troubleshooting.md` FIRST to review:**
-- History of previous fixes attempted
-- Solutions that have already been tried
-- Known issues and their resolutions
-- Patterns of recurring problems
+**ALWAYS check these files FIRST:**
+
+1. **`agent-log-troubleshooting.md`** - Review:
+   - History of previous fixes attempted
+   - Solutions that have already been tried
+   - Known issues and their resolutions
+   - Patterns of recurring problems
+
+2. **`vercel-output-monitor.md`** - Check for deployment issues:
+   - Latest deployment status and timestamps
+   - Build error messages and logs
+   - Deployment failure patterns
+   - Historical deployment tracking
 
 This prevents duplicate troubleshooting attempts and provides context for faster resolution.
 
@@ -45,6 +53,8 @@ npm run type-check # Run TypeScript checking
 ## Important Files to Reference
 
 - `agent-log-troubleshooting.md`: **Check this BEFORE any troubleshooting** - contains history of all fixes
+- `vercel-output-monitor.md`: **Check for deployment issues** - automated monitoring of Vercel deployments
+- `scripts/monitor-vercel-deployment.js`: Automated script for monitoring Vercel deployment status
 - `renovation-advisor-mvp-prd.md`: Product requirements with AI-First Platform Principles
 - `database/contractor-mvp-schema.sql`: Core contractor tables and RLS policies
 - `database/quick-win-schema.sql`: Quick Win demonstration tables
@@ -102,6 +112,33 @@ NODE_ENV=production
 1. **Code Changes**: Push to GitHub master branch
 2. **Vercel**: Auto-deploys from GitHub
 3. **Hostinger**: Manual upload of static HTML files from `/hostinger-deploy/`
+
+### Deployment Monitoring
+
+**Automated Monitoring**: Use `scripts/monitor-vercel-deployment.js` to track deployment status:
+```bash
+# First, test the monitoring setup
+npm run vercel:test
+
+# Set environment variables
+export VERCEL_EMAIL="your-vercel-email@domain.com"
+export VERCEL_PASSWORD="your-vercel-password"
+export VERCEL_PROJECT_NAME="renovation-advisor"  # Optional, defaults to "renovation-advisor"
+
+# Install Playwright browsers if needed
+npx playwright install chromium
+
+# Run monitoring script (either method works)
+npm run vercel:monitor
+# OR
+node scripts/monitor-vercel-deployment.js
+```
+
+**Monitor Log**: Check `vercel-output-monitor.md` for:
+- Latest deployment status and timestamp
+- Build error messages and logs
+- Deployment failure patterns
+- Historical deployment tracking
 
 ## Testing Checklist
 
