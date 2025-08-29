@@ -179,7 +179,9 @@ async function generateQuotePDF(contractorData: any, quoteData: any): Promise<st
     
     // Store quote data in database for PDF generation (async for speed)
     const supabase = await createClient();
-    const insertPromise = supabase
+    
+    // Execute the insert but don't await - fire and forget for Quick Win
+    supabase
       .from('contractor_practice_quotes')
       .insert({
         contractor_id: contractorData.id,
@@ -189,10 +191,9 @@ async function generateQuotePDF(contractorData: any, quoteData: any): Promise<st
         item_count: quoteData.quote_items.length,
         confidence_score: quoteData.confidence_score,
         created_at: new Date().toISOString()
-      });
-    
-    // Don't await to improve speed - fire and forget for Quick Win
-    insertPromise.catch(error => console.error('Database insert error:', error));
+      })
+      .then(() => console.log('Quote data saved to database'))
+      .catch(error => console.error('Database insert error:', error));
     
     const processingTime = Date.now() - startTime;
     console.log(`PDF generation completed in ${processingTime}ms for ${displayName}`);

@@ -90,6 +90,23 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - Supabase Query Builder Promise Execution Error
+
+**Problem:** Build failed with "Property 'catch' does not exist on type 'PostgrestFilterBuilder'"
+
+**Root Cause:** Supabase query builders are not Promises until executed. The insert() method returns a query builder that needs to be executed to become a Promise.
+
+**Solution:** Removed intermediate variable and directly chained .then() and .catch() to the query execution, allowing the query to execute and return a Promise
+
+**Files Modified:**
+- app/api/contractors/quick-win-quote/route.ts
+
+**Status:** RESOLVED
+
+**Additional Notes:** This is the 5th fix attempt for the Vercel build. The pattern of errors shows Next.js 15 compatibility issues with async operations.
+
+---
+
 ## Template for Future Entries
 
 ```
