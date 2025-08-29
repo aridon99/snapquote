@@ -94,10 +94,10 @@ export async function POST(request: NextRequest) {
       project
     })
     
-  } catch (error: any) {
+  } catch (error) {
     console.error('Project creation error:', error)
     return NextResponse.json(
-      { error: error.message || 'Failed to create project' },
+      { error: error instanceof Error ? error.message : 'Failed to create project' },
       { status: 500 }
     )
   }

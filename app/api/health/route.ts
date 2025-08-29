@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
       { 
         success: false, 
         message: 'Health check failed',
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
         timestamp: new Date().toISOString()
       },
       { status: 500 }

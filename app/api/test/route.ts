@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       { 
         success: false, 
         message: 'Test API failed',
-        error: error.message 
+        error: error instanceof Error ? error.message : String(error)
       },
       { status: 500 }
     );
