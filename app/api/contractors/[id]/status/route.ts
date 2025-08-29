@@ -17,7 +17,7 @@ export async function GET(
     }
 
     // Initialize Supabase client
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Get contractor status
     const { data: contractor, error } = await supabase

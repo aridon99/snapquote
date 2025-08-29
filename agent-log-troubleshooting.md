@@ -38,6 +38,23 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - Supabase Client Async Access Issue
+
+**Problem:** Build failed with "Property 'from' does not exist on type 'Promise<SupabaseClient>'"
+
+**Root Cause:** In Next.js 15, the createClient() function from @/lib/supabase/server is async and returns a Promise that needs to be awaited
+
+**Solution:** Added await when calling createClient() in the API route: `const supabase = await createClient();`
+
+**Files Modified:**
+- app/api/contractors/[id]/status/route.ts
+
+**Status:** RESOLVED
+
+**Additional Notes:** Fixed and ready for deployment
+
+---
+
 ## Template for Future Entries
 
 ```
