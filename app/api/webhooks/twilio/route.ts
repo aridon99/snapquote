@@ -121,14 +121,59 @@ async function handleIncomingSMS(webhookData: any) {
 
     if (isWhatsApp && hasAudioMedia && mediaUrl) {
       console.log('Processing WhatsApp voice message');
-      await handleWhatsAppVoiceMessage(fromPhone, mediaUrl, messageSid);
+      
+      // Check if this is a contractor and if they need Quick Win
+      const cleanPhone = fromPhone.replace('whatsapp:', '').replace(/^\+1?/, '').replace(/\D/g, '');
+      const { data: contractor } = await supabase
+        .from('contractors')
+        .select('*, contractor_onboarding_progress!inner(*)')
+        .or(`phone.eq.${cleanPhone},whatsapp_number.eq.${fromPhone}`)
+        .eq('whatsapp_verified', true)
+        .single();
+
+      if (contractor && !contractor.contractor_onboarding_progress[0]?.quick_win_completed) {
+        console.log('Processing Quick Win practice quote');
+        await handleQuickWinVoiceMessage(fromPhone, mediaUrl, messageSid, contractor);
+      } else {
+        console.log('Processing regular voice message');
+        await handleWhatsAppVoiceMessage(fromPhone, mediaUrl, messageSid);
+      }
       return;
     }
 
-    // Handle text messages (existing SMS processing)
+    // Handle text messages - Check if Quick Win or existing SMS processing
     if (messageBody) {
       console.log(`Processing text message: "${messageBody}"`);
-      await processContractorSMSResponse(fromPhone, messageBody, messageSid);
+      
+      // Check if this is a verified contractor who hasn't completed Quick Win
+      const cleanPhone = fromPhone.replace('whatsapp:', '').replace(/^\+1?/, '').replace(/\D/g, '');
+      const { data: contractor } = await supabase
+        .from('contractors')
+        .select('*, contractor_onboarding_progress!inner(*)')
+        .or(`phone.eq.${cleanPhone},whatsapp_number.eq.${fromPhone}`)
+        .eq('whatsapp_verified', true)
+        .single();
+
+      // If contractor needs Quick Win and message isn't just a verification code
+      if (contractor && 
+          !contractor.contractor_onboarding_progress[0]?.quick_win_completed &&
+          !/^\d{6}$/.test(messageBody.trim()) &&
+          messageBody.trim().length > 10) {
+        
+        console.log('Processing Quick Win practice quote via text');
+        await handleQuickWinTextMessage(fromPhone, messageBody, messageSid, contractor);
+      } 
+      // Check if contractor completed Quick Win and wants to continue setup
+      else if (contractor && 
+               contractor.contractor_onboarding_progress[0]?.quick_win_completed &&
+               /^(yes|y|continue|setup|next)$/i.test(messageBody.trim())) {
+        
+        console.log('Contractor wants to continue with progressive profile completion');
+        await handleProgressiveProfileSetup(fromPhone, contractor);
+      } else {
+        // Handle as regular SMS processing
+        await processContractorSMSResponse(fromPhone, messageBody, messageSid);
+      }
     }
 
     // Mark as processed
@@ -137,6 +182,151 @@ async function handleIncomingSMS(webhookData: any) {
   } catch (error) {
     console.error('Error handling incoming message:', error);
     await logTwilioWebhook(webhookData, true);
+  }
+}
+
+// Handle progressive profile completion after Quick Win
+async function handleProgressiveProfileSetup(fromPhone: string, contractor: any) {
+  try {
+    const isGenericBranding = contractor.business_name === 'ABC Contractor Inc';
+    
+    if (isGenericBranding) {
+      // Step 1: Get their actual business name
+      await sendWhatsAppMessage(fromPhone, 
+        `🏢 Great! Let's personalize your quotes.\n\n` +
+        `What's your actual business name?\n\n` +
+        `Examples:\n• "Smith Plumbing"\n• "Elite Electric"\n• "Just put ${contractor.contact_name}"\n\n` +
+        `Type your business name:`
+      );
+    } else {
+      // Already have business name, ask about trade specialization  
+      await sendWhatsAppMessage(fromPhone, 
+        `🔧 Perfect! Now let's set your trade specialty.\n\n` +
+        `What's your primary trade?\n\n` +
+        `Options:\n• Plumber\n• Electrician\n• Flooring\n• Drywall\n• Painter\n• Other\n\n` +
+        `Type your trade:`
+      );
+    }
+
+    console.log(`Started progressive profile setup for ${contractor.contact_name}`);
+
+  } catch (error) {
+    console.error('Error in progressive profile setup:', error);
+    await sendWhatsAppMessage(fromPhone, 
+      '❌ Something went wrong. Try replying YES again to continue setup.'
+    );
+  }
+}
+
+// Handle Quick Win practice quote text messages (voice OR text flexibility)
+async function handleQuickWinTextMessage(fromPhone: string, messageText: string, messageSid: string, contractor: any) {
+  try {
+    console.log(`Processing Quick Win practice quote text for ${contractor.business_name}`);
+
+    // Send acknowledgment message
+    await sendWhatsAppMessage(fromPhone, 
+      '💬 Got your practice quote text! Processing with AI...\n\n⚡ Target: Sub-4 second response'
+    );
+
+    // Call the Quick Win processing API with text transcription
+    const apiUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    
+    try {
+      const response = await fetch(`${apiUrl}/api/contractors/quick-win-quote`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contractor_id: contractor.id,
+          voice_transcription: messageText, // Use text as transcription
+          message_sid: messageSid
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        console.error('Quick Win text processing failed:', result);
+        
+        await sendWhatsAppMessage(fromPhone, 
+          `❌ ${result.message}\n\n🎯 Try again with clear prices like:\n"Install toilet - $200 labor, $50 wax ring"\n\n🎤 You can also send a voice message!`
+        );
+        return;
+      }
+
+      // Success is handled by the API endpoint itself
+      console.log(`Quick Win quote generated successfully from text for ${contractor.business_name}`);
+
+    } catch (apiError) {
+      console.error('Error calling Quick Win API with text:', apiError);
+      await sendWhatsAppMessage(fromPhone, 
+        '❌ Something went wrong processing your text quote.\n\n🔄 Try again with voice OR text!'
+      );
+    }
+
+  } catch (error) {
+    console.error('Error handling Quick Win text message:', error);
+    await sendWhatsAppMessage(fromPhone, 
+      '❌ Something went wrong. Please try again with voice OR text!'
+    );
+  }
+}
+
+// Handle Quick Win practice quote voice messages
+async function handleQuickWinVoiceMessage(fromPhone: string, mediaUrl: string, messageSid: string, contractor: any) {
+  try {
+    console.log(`Processing Quick Win practice quote for ${contractor.business_name}`);
+
+    // Send acknowledgment message with performance target
+    await sendWhatsAppMessage(fromPhone, 
+      '🎤 Got your practice quote! Processing with AI...\n\n⚡ Target: Sub-4 second response'
+    );
+
+    // Call the Quick Win processing API
+    const apiUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    
+    try {
+      const response = await fetch(`${apiUrl}/api/contractors/quick-win-quote`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contractor_id: contractor.id,
+          media_url: mediaUrl,
+          message_sid: messageSid
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        console.error('Quick Win processing failed:', result);
+        
+        await sendWhatsAppMessage(fromPhone, 
+          result.transcription 
+            ? `I heard: "${result.transcription}"\n\n❌ ${result.message}\n\n🎤 Try recording again OR type with clear prices like:\n"Install toilet - $200 labor, $50 wax ring"`
+            : `❌ ${result.message || 'Failed to process. Try voice recording OR typing your quote.'}`
+        );
+        return;
+      }
+
+      // Success is handled by the API endpoint itself
+      console.log(`Quick Win quote generated successfully for ${contractor.business_name}`);
+
+    } catch (apiError) {
+      console.error('Error calling Quick Win API:', apiError);
+      await sendWhatsAppMessage(fromPhone, 
+        '❌ Something went wrong processing your quote. Our team will review it manually.\n\nYou can also try recording again!'
+      );
+    }
+
+  } catch (error) {
+    console.error('Error handling Quick Win voice message:', error);
+    await sendWhatsAppMessage(fromPhone, 
+      '❌ Something went wrong with your practice quote. Please try recording again!'
+    );
   }
 }
 
@@ -494,14 +684,17 @@ async function handleContractorVerification(fromPhone: string, verificationCode:
         updated_at: new Date().toISOString()
       });
 
-    // Send success message
+    // Send success message with Quick Win instructions and voice/text flexibility
+    const welcomeName = contractor.business_name === 'ABC Contractor Inc' ? contractor.contact_name : contractor.business_name;
+    const brandingMessage = contractor.business_name === 'ABC Contractor Inc' ? 
+      `\n\n🎯 Complete your profile after this to get quotes with YOUR business name and branding!` : ``;
+    
     await sendWhatsAppMessage(fromPhone, 
-      `✅ Verified! Welcome ${contractor.business_name}!\n\n` +
-      `You can now:\n` +
-      `📷 Send invoice photos to extract pricing\n` +
-      `🎤 Send voice messages with price updates\n` +
-      `💬 Answer our pricing questions\n\n` +
-      `Visit your dashboard: renovationadvisor.com/contractor`
+      `✅ Verified! Welcome ${welcomeName}!\n\n` +
+      `🚀 Let's create your first quote in under 2 minutes!\n\n` +
+      `📝 Send me a VOICE message OR type describing a simple job WITH your prices.\n\n` +
+      `Example: "Front bathroom needs a new faucet, labor is $350 and faucet will be $200. Wobbly toilet needs resetting, which is $250 labor and $50 for a new wax ring."\n\n` +
+      `🎤 Tap and hold to record OR just type your practice quote now!${brandingMessage}`
     );
 
     console.log(`Successfully verified contractor: ${contractor.business_name}`);

@@ -215,8 +215,8 @@ ALTER TABLE contractor_onboarding_progress ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Contractors can view own prices"
     ON contractor_price_items FOR SELECT
     USING (contractor_id IN (
-        SELECT id FROM contractors WHERE id = (
-            SELECT id FROM contractors c 
+        SELECT contractors.id FROM contractors WHERE contractors.id = (
+            SELECT c.id FROM contractors c 
             JOIN profiles p ON c.email = p.email 
             WHERE p.id = auth.uid()
         )
@@ -225,8 +225,8 @@ CREATE POLICY "Contractors can view own prices"
 CREATE POLICY "Contractors can update own prices"
     ON contractor_price_items FOR UPDATE
     USING (contractor_id IN (
-        SELECT id FROM contractors WHERE id = (
-            SELECT id FROM contractors c 
+        SELECT contractors.id FROM contractors WHERE contractors.id = (
+            SELECT c.id FROM contractors c 
             JOIN profiles p ON c.email = p.email 
             WHERE p.id = auth.uid()
         )
@@ -236,8 +236,8 @@ CREATE POLICY "Contractors can update own prices"
 CREATE POLICY "Contractors can view own invoices"
     ON contractor_invoices FOR SELECT
     USING (contractor_id IN (
-        SELECT id FROM contractors WHERE id = (
-            SELECT id FROM contractors c 
+        SELECT contractors.id FROM contractors WHERE contractors.id = (
+            SELECT c.id FROM contractors c 
             JOIN profiles p ON c.email = p.email 
             WHERE p.id = auth.uid()
         )
