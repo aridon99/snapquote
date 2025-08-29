@@ -84,11 +84,22 @@ async function sendWhatsAppVerification(phone: string, code: string, contactName
 
 // POST handler for contractor signup
 export async function POST(request: NextRequest) {
+  console.log('🚀 === SIGNUP API CALLED ===');
+  console.log('Timestamp:', new Date().toISOString());
+  console.log('Request URL:', request.url);
+  console.log('Request method:', request.method);
+  console.log('Request headers:', Object.fromEntries(request.headers.entries()));
+  
   try {
     const body = await request.json();
+    console.log('📥 Request body received:', body);
     
     // Validate input data
     const validationResult = signupSchema.safeParse(body);
+    console.log('✅ Validation result:', validationResult.success ? 'PASSED' : 'FAILED');
+    if (!validationResult.success) {
+      console.log('❌ Validation errors:', validationResult.error.errors);
+    }
     if (!validationResult.success) {
       const validationResponse = NextResponse.json(
         { 
@@ -104,7 +115,9 @@ export async function POST(request: NextRequest) {
     const { contact_name, phone, business_name = 'ABC Contractor Inc', trade = 'general' } = validationResult.data;
 
     // Initialize Supabase client
+    console.log('🗄️ Connecting to Supabase...');
     const supabase = await createClient();
+    console.log('✅ Supabase client created successfully');
 
     // Check if phone number is already registered
     const { data: existingContractor } = await supabase
