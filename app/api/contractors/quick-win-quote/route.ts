@@ -283,7 +283,8 @@ export async function POST(request: NextRequest) {
     // If we have a media URL, transcribe it first
     if (media_url && !transcription) {
       console.log('Transcribing audio for contractor:', contractor.business_name);
-      transcription = await transcribeAudio(media_url);
+      const audioTranscription = await transcribeAudio(media_url);
+      transcription = audioTranscription || undefined;
       
       if (!transcription) {
         return NextResponse.json(

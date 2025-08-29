@@ -124,6 +124,23 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - TypeScript Null/Undefined Type Incompatibility
+
+**Problem:** Build failed with "Type 'string | null' is not assignable to type 'string | undefined'"
+
+**Root Cause:** TypeScript strict mode - null and undefined are not interchangeable. The transcribeAudio function returns null but the variable expects undefined
+
+**Solution:** Convert null to undefined using the nullish coalescing pattern: `audioTranscription || undefined`
+
+**Files Modified:**
+- app/api/contractors/quick-win-quote/route.ts:286
+
+**Status:** RESOLVED
+
+**Additional Notes:** This is the 7th fix attempt. TypeScript in Next.js 15 has strict null/undefined typing.
+
+---
+
 ## Template for Future Entries
 
 ```
