@@ -18,21 +18,30 @@ The Renovation Advisor Platform (SnapQuote) is a Next.js 15 application that pro
 ## Troubleshooting Protocol
 
 ### IMPORTANT: Before Attempting Any Troubleshooting
-**ALWAYS check these files FIRST:**
+**ALWAYS check these files IN ORDER:**
 
-1. **`agent-log-troubleshooting.md`** - Review:
+1. **`agent-log-monitoring.md`** - Check FIRST for current status:
+   - Latest deployment results and specific error details
+   - File paths, line numbers, and exact error messages
+   - Patterns identified from 6+ deployment attempts
+   - Success/failure rate of previous fixes
+   - Current deployment ID and commit being monitored
+
+2. **`agent-log-troubleshooting.md`** - Review fix history:
    - History of previous fixes attempted
    - Solutions that have already been tried
    - Known issues and their resolutions
-   - Patterns of recurring problems
+   - Technical details of each fix
 
-2. **`vercel-output-monitor.md`** - Check for deployment issues:
+3. **`vercel-output-monitor.md`** - Additional deployment tracking:
    - Latest deployment status and timestamps
    - Build error messages and logs
    - Deployment failure patterns
    - Historical deployment tracking
 
-This prevents duplicate troubleshooting attempts and provides context for faster resolution.
+**Critical: The monitoring log shows we're on fix attempt #6 with specific TypeScript/Promise patterns emerging.**
+
+This three-step process prevents duplicate fixes and provides complete context for faster resolution.
 
 ## Key Development Commands
 
@@ -52,7 +61,8 @@ npm run type-check # Run TypeScript checking
 
 ## Important Files to Reference
 
-- `agent-log-troubleshooting.md`: **Check this BEFORE any troubleshooting** - contains history of all fixes
+- `agent-log-monitoring.md`: **Check FIRST before any fix** - latest deployment status, errors, and patterns from 6+ attempts
+- `agent-log-troubleshooting.md`: **Check SECOND** - contains history of all fixes and technical solutions
 - `vercel-output-monitor.md`: **Check for deployment issues** - automated monitoring of Vercel deployments
 - `scripts/monitor-vercel-deployment.js`: Automated script for monitoring Vercel deployment status
 - `renovation-advisor-mvp-prd.md`: Product requirements with AI-First Platform Principles

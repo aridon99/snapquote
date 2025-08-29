@@ -13,7 +13,12 @@
     "arch:scan": "node scripts/architecture-monitor.js scan",
     "arch:help": "node scripts/architecture-monitor.js help",
     "vercel:monitor": "node scripts/monitor-vercel-deployment.js",
-    "vercel:test": "node scripts/test-monitor-setup.js"
+    "vercel:test": "node scripts/test-monitor-setup.js",
+    "deploy:monitor": "node scripts/vercel-monitor-subagent.js",
+    "deploy:mcp": "node scripts/mcp-vercel-monitor.js",
+    "deploy:feedback": "node scripts/auto-deploy-feedback-loop.js",
+    "deploy:test": "node scripts/test-deployment-monitor.js --mock --verbose",
+    "deploy:test-live": "node scripts/test-deployment-monitor.js --live --verbose"
   },
   "keywords": [],
   "author": "",

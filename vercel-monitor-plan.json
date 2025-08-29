@@ -1,0 +1,190 @@
+{
+  "name": "Vercel Deployment Monitor",
+  "description": "Automated monitoring of Vercel deployments with structured error reporting",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Environment Check",
+      "description": "Verify required environment variables",
+      "requiredVars": {
+        "VERCEL_EMAIL": "Required: Your Vercel account email",
+        "VERCEL_PASSWORD": "Required: Your Vercel account password",
+        "VERCEL_PROJECT_NAME": "renovation-advisor",
+        "GITHUB_REPO": "aridon99/snapquote",
+        "TARGET_BRANCH": "master"
+      },
+      "action": "validate_environment"
+    },
+    {
+      "step": 2,
+      "name": "Browser Setup",
+      "description": "Initialize Playwright browser with optimal settings",
+      "commands": [
+        {
+          "action": "launch",
+          "options": {
+            "headless": true,
+            "args": [
+              "--no-sandbox",
+              "--disable-setuid-sandbox"
+            ]
+          }
+        },
+        {
+          "action": "newPage",
+          "options": {}
+        },
+        {
+          "action": "setViewportSize",
+          "options": {
+            "width": 1280,
+            "height": 720
+          }
+        }
+      ],
+      "action": "setup_browser"
+    },
+    {
+      "step": 3,
+      "name": "Vercel Authentication",
+      "description": "Log into Vercel dashboard",
+      "commands": [
+        {
+          "action": "goto",
+          "url": "https://vercel.com/login",
+          "options": {
+            "waitUntil": "networkidle",
+            "timeout": 15000
+          }
+        },
+        {
+          "action": "fill",
+          "selector": "input[name=\"email\"]",
+          "value": "${VERCEL_EMAIL}"
+        },
+        {
+          "action": "fill",
+          "selector": "input[name=\"password\"]",
+          "value": "${VERCEL_PASSWORD}"
+        },
+        {
+          "action": "click",
+          "selector": "button[type=\"submit\"]"
+        },
+        {
+          "action": "waitForURL",
+          "pattern": "**/dashboard**",
+          "options": {
+            "timeout": 15000
+          }
+        }
+      ],
+      "action": "authenticate",
+      "expectedResult": "Successful navigation to dashboard"
+    },
+    {
+      "step": 4,
+      "name": "Project Navigation",
+      "description": "Navigate to renovation-advisor project deployments",
+      "commands": [
+        {
+          "action": "goto",
+          "url": "https://vercel.com/aridon99/renovation-advisor/deployments",
+          "options": {
+            "waitUntil": "networkidle",
+            "timeout": 15000
+          }
+        },
+        {
+          "action": "waitForSelector",
+          "selector": "[data-testid=\"deployment-list\"], .deployment-list",
+          "options": {
+            "timeout": 10000
+          }
+        }
+      ],
+      "action": "navigate_to_project",
+      "expectedResult": "Deployment list visible"
+    },
+    {
+      "step": 5,
+      "name": "Status Monitoring",
+      "description": "Monitor deployment status until completion",
+      "commands": [
+        {
+          "action": "locator",
+          "selector": "[data-testid=\"deployment-item\"]",
+          "method": "first"
+        },
+        {
+          "action": "getAttribute",
+          "selector": "[data-testid=\"deployment-item\"] [data-testid=\"deployment-status\"]",
+          "attribute": "textContent"
+        }
+      ],
+      "action": "monitor_status",
+      "maxWaitTime": 300000,
+      "pollInterval": 15000
+    },
+    {
+      "step": 6,
+      "name": "Result Processing",
+      "description": "Extract and structure deployment results",
+      "conditionalCommands": {
+        "onSuccess": [],
+        "onError": [
+          {
+            "action": "click",
+            "selector": "[data-testid=\"deployment-item\"]:first-child"
+          },
+          {
+            "action": "waitForTimeout",
+            "duration": 3000
+          },
+          {
+            "action": "locator",
+            "selector": "[data-testid=\"build-error\"], .build-error, .error-message",
+            "method": "allTextContents"
+          },
+          {
+            "action": "locator",
+            "selector": "[data-testid=\"build-output\"], .build-output",
+            "method": "textContent"
+          }
+        ]
+      },
+      "action": "process_results"
+    }
+  ],
+  "expectedResults": {
+    "SUCCESS": {
+      "type": "SUCCESS",
+      "message": "Build completed successfully",
+      "structure": {
+        "deploymentId": "string",
+        "status": "string",
+        "timestamp": "ISO string"
+      }
+    },
+    "ERROR": {
+      "type": "ERROR",
+      "message": "Build failed with specific error details",
+      "structure": {
+        "deploymentId": "string",
+        "status": "string",
+        "timestamp": "ISO string",
+        "errors": [
+          {
+            "type": "string (TypeScript Error, ESLint Error, etc.)",
+            "file": "string (file path)",
+            "line": "number (optional)",
+            "column": "number (optional)",
+            "message": "string (error description)",
+            "code": "string (error code, optional)"
+          }
+        ],
+        "buildOutput": "string (last 1000 chars of build output)"
+      }
+    }
+  }
+}

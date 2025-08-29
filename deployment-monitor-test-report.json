@@ -1,0 +1,389 @@
+{
+  "timestamp": "2025-08-29T18:52:13.997Z",
+  "mode": "mock",
+  "summary": {
+    "totalTests": 62,
+    "passedTests": 23,
+    "failedTests": 0
+  },
+  "testResults": [
+    {
+      "timestamp": "2025-08-29T18:52:13.960Z",
+      "level": "info",
+      "message": "🚀 Starting Deployment Monitor System Tests..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "Mode: Mock"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "🧪 Running Test: Environment Validation"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "Testing environment validation..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "success",
+      "message": "✓ Environment variable validation successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "success",
+      "message": "✅ Environment Validation - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "🧪 Running Test: VercelMonitorAgent"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "Testing VercelMonitorAgent class..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "success",
+      "message": "✓ Agent initialization test (mocked)"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "success",
+      "message": "✓ Error parsing test successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "success",
+      "message": "✅ VercelMonitorAgent - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "🧪 Running Test: AutoDeployFeedbackLoop"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.961Z",
+      "level": "info",
+      "message": "Testing AutoDeployFeedbackLoop class..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Feedback loop initialization successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Module name extraction test successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Fix generation test: no automatic fix"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✅ AutoDeployFeedbackLoop - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "🧪 Running Test: MCPVercelMonitor"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "Testing MCPVercelMonitor class..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Playwright commands generation successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Status parsing tests successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✓ Monitoring plan creation successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "success",
+      "message": "✅ MCPVercelMonitor - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "🧪 Running Test: File Operations"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.996Z",
+      "level": "info",
+      "message": "Testing file operations..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Log file creation successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Log file content verification successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Test file cleanup successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✅ File Operations - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "\n=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "🧪 Running Test: Mock Scenarios"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Testing mock deployment scenarios..."
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Testing scenario: Successful Deployment"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Scenario Successful Deployment validated"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Testing scenario: TypeScript Error"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "  ✓ Error parsing for TypeScript Error successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Scenario TypeScript Error validated"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Testing scenario: ESLint Error"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "  ✓ Error parsing for ESLint Error successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Scenario ESLint Error validated"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Testing scenario: Module Not Found"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "  ✓ Error parsing for Build Error successful"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✓ Scenario Module Not Found validated"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "✅ Mock Scenarios - PASSED"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "\n============================================================"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "📊 TEST SUMMARY"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "============================================================"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Total Tests: 6"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "success",
+      "message": "Passed: 6"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Failed: 0"
+    },
+    {
+      "timestamp": "2025-08-29T18:52:13.997Z",
+      "level": "info",
+      "message": "Success Rate: 100%"
+    }
+  ],
+  "mockScenarios": [
+    {
+      "name": "Successful Deployment",
+      "result": {
+        "type": "SUCCESS",
+        "message": "Build completed successfully",
+        "deploymentId": "dpl_test123",
+        "status": "Ready",
+        "timestamp": "2025-08-29T18:52:13.997Z"
+      }
+    },
+    {
+      "name": "TypeScript Error",
+      "result": {
+        "type": "ERROR",
+        "message": "Build failed with TypeScript errors",
+        "deploymentId": "dpl_test456",
+        "status": "Failed",
+        "timestamp": "2025-08-29T18:52:13.997Z",
+        "errors": [
+          {
+            "type": "TypeScript Error",
+            "file": "src/components/TestComponent.tsx",
+            "line": 42,
+            "column": 10,
+            "code": "TS2322",
+            "message": "Type 'string' is not assignable to type 'number'"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ESLint Error",
+      "result": {
+        "type": "ERROR",
+        "message": "Build failed with ESLint errors",
+        "deploymentId": "dpl_test789",
+        "status": "Failed",
+        "timestamp": "2025-08-29T18:52:13.997Z",
+        "errors": [
+          {
+            "type": "ESLint Error",
+            "file": "src/utils/helper.ts",
+            "line": 15,
+            "column": 3,
+            "message": "Unexpected console statement",
+            "rule": "no-console"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Module Not Found",
+      "result": {
+        "type": "ERROR",
+        "message": "Build failed with missing module",
+        "deploymentId": "dpl_test101",
+        "status": "Failed",
+        "timestamp": "2025-08-29T18:52:13.997Z",
+        "errors": [
+          {
+            "type": "Build Error",
+            "message": "Cannot find module 'missing-package'"
+          }
+        ]
+      }
+    }
+  ]
+}
