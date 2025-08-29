@@ -4,10 +4,10 @@ import { createClient } from '@/lib/supabase/server';
 // GET handler to check contractor verification status
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const contractorId = params.id;
+    const { id: contractorId } = await params;
 
     if (!contractorId) {
       return NextResponse.json(
