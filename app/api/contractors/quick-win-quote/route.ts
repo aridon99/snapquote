@@ -117,12 +117,12 @@ async function transcribeAudio(mediaUrl: string): Promise<string | null> {
         temperature: 0.0
       });
       
-      console.log('Transcription successful:', transcription.text);
+      console.log('Transcription successful:', transcription);
       
       // Clean up temp file
       fs.unlinkSync(tempFilePath);
       
-      return transcription.text;
+      return transcription;
     } catch (transcriptError) {
       // Clean up temp file on error
       if (fs.existsSync(tempFilePath)) {

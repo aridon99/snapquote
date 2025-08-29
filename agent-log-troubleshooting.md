@@ -55,6 +55,21 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - OpenAI Transcription API Response Format Issue
+
+**Problem:** Build failed with "Property 'text' does not exist on type 'string'"
+
+**Root Cause:** When using `response_format: 'text'` with OpenAI's transcription API, it returns a string directly, not an object with a text property
+
+**Solution:** Changed from `transcription.text` to just `transcription` since the API returns the text directly as a string
+
+**Files Modified:**
+- app/api/contractors/quick-win-quote/route.ts
+
+**Status:** RESOLVED
+
+---
+
 ## Template for Future Entries
 
 ```
