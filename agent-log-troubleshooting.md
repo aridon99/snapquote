@@ -70,6 +70,26 @@ This file documents technical issues, their root causes, solutions implemented, 
 
 ---
 
+## [2025-08-29] - Comprehensive Supabase Client Async Fix Across All API Routes
+
+**Problem:** Multiple build failures with "Property 'from' does not exist on type 'Promise<SupabaseClient>'" across different API routes
+
+**Root Cause:** The createClient() function is async in Next.js 15 and returns a Promise. All API routes using Supabase need to await this function.
+
+**Solution:** Added await to all createClient() calls across all API routes. Performed comprehensive search and fixed all instances.
+
+**Files Modified:** 
+- app/api/contractors/quick-win-quote/route.ts (2 instances)
+- app/api/health/route.ts (1 instance)
+- app/api/contractors/signup/route.ts (1 instance)
+- app/api/contractors/[id]/status/route.ts (previously fixed)
+
+**Status:** RESOLVED - Comprehensive fix applied to all API routes
+
+**Additional Notes:** This comprehensive fix ensures all Supabase client usage across the application is compatible with Next.js 15. All API routes have been systematically updated to properly await the createClient() function, eliminating the async/Promise type errors that were preventing successful builds.
+
+---
+
 ## Template for Future Entries
 
 ```

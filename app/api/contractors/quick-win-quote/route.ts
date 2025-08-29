@@ -178,7 +178,7 @@ async function generateQuotePDF(contractorData: any, quoteData: any): Promise<st
     const mockPdfUrl = `https://renovation-advisor-ten.vercel.app/api/quotes/practice-${contractorData.id}-${Date.now()}.pdf`;
     
     // Store quote data in database for PDF generation (async for speed)
-    const supabase = createClient();
+    const supabase = await createClient();
     const insertPromise = supabase
       .from('contractor_practice_quotes')
       .insert({
@@ -261,7 +261,7 @@ export async function POST(request: NextRequest) {
     const { contractor_id, voice_transcription, media_url, message_sid } = validationResult.data;
 
     // Get contractor data
-    const supabase = createClient();
+    const supabase = await createClient();
     const { data: contractor, error: contractorError } = await supabase
       .from('contractors')
       .select('*')

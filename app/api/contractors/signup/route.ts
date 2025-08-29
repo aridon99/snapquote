@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
     const { contact_name, phone, business_name = 'ABC Contractor Inc', trade = 'general' } = validationResult.data;
 
     // Initialize Supabase client
-    const supabase = createClient();
+    const supabase = await createClient();
 
     // Check if phone number is already registered
     const { data: existingContractor } = await supabase

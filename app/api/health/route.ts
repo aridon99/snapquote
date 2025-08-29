@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
     // Check Supabase connection
     try {
-      const supabase = createClient();
+      const supabase = await createClient();
       const { data, error } = await supabase.from('contractors').select('count').limit(1);
       checks.supabase = !error;
     } catch (error) {
